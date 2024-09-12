@@ -1,21 +1,59 @@
+
+:root{
+  --bg-color: rgb(242, 242, 242); /* Light gray background */
+  --text-color: rgb(20, 20, 20); /* Very dark gray text for high readability */
+  --title-bg-color: rgba(151, 221, 237, 0.9); /* Bright pink with transparency for titles */
+  --nav-box-shadow: 1px 1px 5px rgb(0, 191, 255); /* Vivid orange shadow for navigation */
+  --page-box-shadow: inset 0px -1px 6px rgb(0, 191, 255); /* Bright cyan for page shadows */
+  --text-shadow: 0px 0px 0px rgb(0, 0, 0); /* Semi-transparent black shadow for text */
+  --name-color: rgb(8, 135, 155); /* Bright green for key text */
+  --name-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for names/titles */
+  --link-color: rgb(0, 93, 119); /* Vibrant red-orange for links */
+}
+[data-theme='dark'] {
+  --bg-color: rgb(18, 18, 18); /* Very dark gray background */
+  --text-color: rgb(240, 240, 240); /* Light gray text */
+  --title-bg-color: rgba(0, 92, 190, 0.256); /* Bright blue with transparency */
+  --nav-box-shadow: 1px 1px 5px rgb(0, 191, 255); /* Darker blue shadow */
+  --page-box-shadow: inset 0px -1px 6px rgb(0, 191, 255); /* Darker blue shadow */
+  --text-shadow: 0px 0px 3px rgb(0, 0, 0); /* Black shadow */
+  --name-color: rgb(0, 204, 255); /* Bright cyan */
+  --name-text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Subtle shadow */
+  --link-color: rgb(112, 210, 255); /* Vibrant orange */
+}
 * {
-  font-family: monospace;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+  color: var(--text-color);
 }
 body{
-  background-color: rgb(188, 255, 121);
-  overflow: hidden;
+  background-color: var(--bg-color);
+  height: fit-content;
+  width: 100vw;
+  overflow: scroll;
 }
 .App {
+  overflow: scroll;
   height:fit-content;
   text-align: left;
-  background-color: rgb(188, 255, 121);
+  background-color: var(--bg-color);
 }
+.About,.contact{
+  overflow:auto;
+  padding:10px 40px;
+  height: 100vh;
+  width: 100%;
+  box-shadow: var(--page-box-shadow);
+  animation:from-bottoma .75s ease-in-out;
+}
+
 .About,.contact,.project{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height:calc(100vh - 78.22px);
-  overflow: hidden;
+  flex-wrap:nowrap;
+  justify-content: space-evenly;
 }
 .contact{
   align-items: center;
@@ -30,7 +68,7 @@ line-height: 30px;
   justify-content: start;
   align-items: start;
   padding: 50px;
-  border-radius: 10px;
+  border-radius: 0px 70px 70px 0px;
   height: fit-content;
 }
 .subtitle{
@@ -42,21 +80,24 @@ line-height: 30px;
   width: fit-content;
   padding: 7.5px 15px;
   border-radius: 5px;
-  background-color: rgba(65, 105, 0, 0.23);
-  display: inline;
+  background-color:var(--title-bg-color);
 
 }
 .navbrand,.type,.aboutquote,.contact h4{
   letter-spacing: 1.5px;
 }
 .navbrand{
+  font-family: 'Cascadia Code', 'Consolas', 'Courier New', 'Segoe UI', 'Menlo', 'Monaco', monospace;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: var(--name-color);
   margin-left: -11px;
 }
 .name{
   font-size:45px;
   font-weight:bold;
-  color: rgb(0, 92, 6);
-  text-shadow: 1px 1px 1px black;
+  color: var(--name-color);
+  text-shadow: var(--name-text-shadow);
 }
 .aboutquote,.type{
   font-size: 16px;
@@ -65,18 +106,27 @@ line-height: 30px;
   text-align: justify;
 }
 .header{
-  text-shadow: 1px 1px 1px rgb(21, 92, 0);
+  font-weight: bolder;
+}
+.navbrand{
+  color: var(--text-color);
 }
 
-.navlink {
-  padding: 0 10px;
-  margin: 0 48px 0 0;
-  border: solid 2px green;
+.navlink{
+  text-decoration: none;
+  color: var(--text-color);
+  padding:8px 10px;
+  margin-right: 48px;
   transition: 1s ease-out;
+  border-radius: 10px;
+}
+
+.resume{
+  box-shadow: var(--name-text-shadow);
 }
 .navlink:hover{
   border-radius: 10px;
-  box-shadow: 0px 0px 3px rgb(70, 82, 0);
+  box-shadow: var(--nav-box-shadow);
   transition: 0.4s ease-in-out;
 }
 .collapse{
@@ -86,11 +136,15 @@ line-height: 30px;
 }
 .link{
   text-decoration:none;
-  color: #003b76;
+  color: var(--link-color);
 }
-.namehead,.name,.type,.aboutquote,.aboutpara,.titlehead,.subtitle,.link,.icon,.About,.about,.contacttitle{
-  animation: fade-in 3.5s ease-in-out, from-top 0.75s ease-in-out;
-  overflow: hidden;
+.theme{
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  padding: auto;
+}
+.namehead,.name,.type,.aboutquote,.aboutpara,.titlehead,.subtitle,.link,.icon,.about,.contacttitle{
+  animation: fade-in 2s ease-in-out, from-top 0.75s ease-in-out;
 }
 .contactdiv{
   animation:from-bottom .75s ease-in-out;
@@ -105,24 +159,34 @@ line-height: 30px;
     position: relative;
     top: -500px;
     right: -500px;
+    overflow: hidden;
   }
   to {
     position: relative;
     right: 0px;
     top: 0px;
+    overflow: visible;
   }
 }
 @keyframes from-bottom {
   from {
-    box-shadow: 0px 0px 0px black ;
+    box-shadow: 0px 0px 0px white ;
   }
   to {
     box-shadow: 0px 0px 5px black ;
   }
 }
+@keyframes from-bottoma {
+  from {
+    box-shadow:inset 0px 0px 0px white ;
+  }
+  to {
+    box-shadow:var(--page-box-shadow);
+  }
+}
 @keyframes fade-in {
   from {
-    opacity: 20;
+    opacity: 0;
   }
   to {
     opacity: 100;

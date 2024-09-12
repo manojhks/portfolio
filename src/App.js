@@ -5,10 +5,11 @@ import { About } from './About';
 import { Project } from './Project';
 import { Contact } from './Contact';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container-fluid">
     <BrowserRouter>
       <Example />
       <Routes>
